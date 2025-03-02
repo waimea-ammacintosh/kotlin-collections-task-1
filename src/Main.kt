@@ -19,7 +19,7 @@ fun main() {
     println()
 
     // Create a list to store monkey names
-    val monkeys = null  // FIXME!
+    val monkeys = mutableListOf<String>()  // FIXME!
 
     // Add in some test monkeys
     monkeys.add("Dave")
@@ -51,8 +51,8 @@ fun main() {
     println("Longest Name: ${longestMonkeyName(monkeys)}")
 
     // Check the list
-    check(monkeys.count() == 6)
-    check(monkeyCounter(monkeys) == "There are 6 monkeys!")
+    var numMonkeys = check(monkeys.count())
+    check(monkeyCounter(monkeys) == "There are  monkeys!")
 
     // Removing Monkeys --------------------------------------------
 
@@ -110,7 +110,9 @@ fun showMonkeys(monkeyList: List<String>) {
     println("-------------------")
 
     // Loop through the given list and show each monkey
-    check(false)   // FIXME: Remove this line and add your code
+    for (monkey in monkeyList) {
+        println(monkey)
+    }
 }
 
 
@@ -121,10 +123,12 @@ fun showMonkeys(monkeyList: List<String>) {
 fun getNewMonkey(monkeyList: MutableList<String>) {
     // Ask the user for a monkey name (no blanks)
 
+    println("Enter the next monkeys name: ")
+    val newName = readln()
     // Add the name to the list
-
+    monkeyList.add(newName)
     // Show some feedback
-    println("Added new monkey: NAME HERE")
+    println("Added new monkey: $newName")
 }
 
 
@@ -137,7 +141,9 @@ fun getNewMonkey(monkeyList: MutableList<String>) {
  */
 fun monkeyCounter(monkeyList: List<String>): String {
     // return the number of monkeys in the list
-    return "MONKEY COUNT MESSAGE"   // FIXME!
+    if (monkeyList.count() > 0) {
+        return monkeyList.lastIndex + 1().toString()
+    }
 }
 
 
